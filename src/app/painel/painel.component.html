@@ -1,17 +1,32 @@
 <h1>Painel
 
-<div *ngIf="dadosDaAPI.length > 0">
-    <h2>Dados da API</h2>
+
+  <div *ngIf="dadosDaAPIRetirada.length > 0 && dadosDaAPIDeposito.length > 0 ">
+    <h1>Você recebeu: {{ totalValueDeposito }} esse mês e gastou {{ totalValueRetirada | number: '1.2-2'}}, do dinheiro recebido você tem: {{ totalValueDeposito - totalValueRetirada | number: '1.2-2' }}</h1>
+  </div>
+  <div *ngIf="dadosDaAPIDeposito.length > 0">
     <ul>
-      <li *ngFor="let dado of dadosDaAPI">
-        <strong>ID:</strong> {{ dado.id }}, 
-        <strong>Data de Criação:</strong> {{ dado.createat }}, 
+      <li *ngFor="let dado of dadosDaAPIDeposito">
+        <strong>Data de recebimento:</strong> {{ dado.createat }}, 
         <strong>Mês:</strong> {{ dado.month }}, 
-        <strong>Descrição:</strong> {{ dado.description }}, 
+        <strong>Descrição do recebimento:</strong> {{ dado.description }}, 
         <strong>Valor:</strong> {{ dado.value }}, 
-        <strong>User ID:</strong> {{ dado.user_id }}
       </li>
     </ul>
-  </div>
+</div>
+
+
+
+<div *ngIf="dadosDaAPIRetirada.length > 0">   
+  <ul>
+    <li *ngFor="let dado of dadosDaAPIRetirada">
+      <strong>Data do gasto:</strong> {{ dado.createat }}, 
+      <strong>Mês:</strong> {{ dado.month }}, 
+      <strong>Descrição do gasto:</strong> {{ dado.description }}, 
+      <strong>Valor:</strong> {{ dado.value }}, 
+    </li>
+  </ul>
+</div>
+
 
 </h1>

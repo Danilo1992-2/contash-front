@@ -7,12 +7,16 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
   })
   export class ApiService {
-    private apiUrl = 'http://localhost:8000';
+    private apiUrl = 'http://localhost:8001';
   
     constructor(private http: HttpClient) {}
   
-    getData(): Observable<any> {
-      return this.http.get(`${this.apiUrl}/deposits/deposit/1`);
+    getDataApiRecebimento(): Observable<any> {
+      return this.http.get(`${this.apiUrl}/deposits/all-deposits-current-moth/1`);
+    }
+
+    getDataApiGastos(): Observable<any> {
+      return this.http.get(`${this.apiUrl}/withdraw/all-withdrawals-current-moth/1`);
     }
   
     // Exemplo de uma requisição POST
